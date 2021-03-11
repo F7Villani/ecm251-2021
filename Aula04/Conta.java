@@ -2,16 +2,26 @@
 
 public class Conta {
     //Atributos
-    Cliente cliente = new Cliente();
-    double saldo;
-    int numero;
+    private Cliente cliente;
+    private double saldo;
+    private int numero;
 
+    //Contrutores da Classe
+    public Conta(String nomeCliente, double saldoInicial){
+        this.saldo = saldoInicial;
+        this.cliente = new Cliente(nomeCliente);
+        this.numero = 1234;
+
+    }
 
     //Métodos
-    void depositar(double valor){
+    public double getSaldo(){
+        return this.saldo;
+    }
+    public void depositar(double valor){
         this.saldo += valor;
     }
-    boolean sacar(double valor){
+    public boolean sacar(double valor){
         if(valor <= this.saldo)
         {
             this.saldo -= valor;
@@ -19,7 +29,7 @@ public class Conta {
         }
         return false;
     }
-    boolean transferirDinheiro(Conta destino, double valor){
+    public boolean transferirDinheiro(Conta destino, double valor){
         if(this.sacar(valor))
         {
             destino.depositar(valor);
@@ -27,7 +37,7 @@ public class Conta {
         }
         return false;
     }   
-    void visualizarSaldo(){
+    public void visualizarSaldo(){
         System.out.println("Saldo atual: R$ "+ this.saldo);
     }
 
