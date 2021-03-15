@@ -1,5 +1,3 @@
-
-
 public class Conta {
     //Atributos
     private Cliente cliente;
@@ -7,11 +5,10 @@ public class Conta {
     private int numero;
 
     //Construtor
-    public Conta(String nomeCliente, double saldoInicial){
+    public Conta(String nomeCliente, double saldoInicial, int numero){
         this.saldo = saldoInicial;
         this.cliente = new Cliente(nomeCliente);
-        this.numero = 1234;
-
+        this.numero = numero;
     }
 
     //Métodos
