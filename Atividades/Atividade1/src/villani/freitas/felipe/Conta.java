@@ -33,6 +33,14 @@ public class Conta {
     // Metodos
 
 
+    public void sacar(double valor){
+        this.saldo = this.saldo - valor;
+    }
+
+    public void depositar(double valor){
+        this.saldo = this.saldo + valor;
+    }
+
     @Override
     public String toString() {
         return "Nome do Usuario" + usuario.getNome() + "Saldo: " + this.saldo;
