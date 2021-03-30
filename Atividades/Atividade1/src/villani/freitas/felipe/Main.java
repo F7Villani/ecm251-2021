@@ -11,10 +11,9 @@ public class Main {
         Conta c1 = new Conta(1,1000.0,u1);
 
         bancoContas.addConta(c1);
-        System.out.println(bancoContas.toString());
-
-
-
+        String string1 = transacao.gerarQRCode(c1,2);
+        System.out.println(transacao.gerarQRCode(c1,2));
+        System.out.println(bancoContas.validarConta(string1));
         /*
         Usuario u1 = new Usuario("All Might");
         Usuario u2 = new Usuario("One For All");
@@ -23,6 +22,10 @@ public class Main {
         Conta c1 = new Conta(1,1000.0,u1);
         Conta c2 = new Conta(2,250.0,u1);
         Conta c3 = new Conta(3,3000.0,u1);
+
+        bancoContas.addConta(c1);
+        bancoContas.addConta(c2);
+        bancoContas.addConta(c3);
 
         System.out.println("Estado inicial: ");
         System.out.println(c1.toString());
@@ -45,5 +48,7 @@ public class Main {
         System.out.println(c3.toString());
 
          */
+
+
     }
 }
