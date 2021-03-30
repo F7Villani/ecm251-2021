@@ -13,6 +13,13 @@ public class BancoContas {
         this.tamanho = 0;
     }
 
+    // Getters
+
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
     // Metodos
      public boolean addConta(Conta conta){
         this.bancoContas[this.tamanho] = conta;
