@@ -16,17 +16,21 @@ public class Transacao {
     }
 
     // Método que realiza um pagamento
-    public boolean realizarPagamento(Conta paga, Conta recebe, String qrcode){
+    public boolean realizarPagamento(Conta paga, Conta recebe, String qrcode, BancoContas bancoContas){
 
         String[] dados = qrcode.split(";");
         double valor = Double.parseDouble(dados[2]);
 
-        if(paga.getSaldo() >=valor ){
-            paga.sacar(valor);
-            recebe.depositar(valor);
-        }
-        else{
-            return false;
+        if(bancoContas.validarConta(qrcode)) {
+        // ^ Verifica se a conta rebedora está no bancoContas
+            if (paga.getSaldo() >= valor) {
+            // ^ Verifica se a conta pagante possui saldo para o pagamento
+                paga.sacar(valor);
+                recebe.depositar(valor);
+            }
+            else{
+                return false;
+            }
         }
         return true;
     }
