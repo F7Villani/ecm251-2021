@@ -3,35 +3,33 @@ package villani.freitas.felipe;
 public class BancoContas {
     // Atributos
     private int max;
-    private int tamanho;
     private Conta[] bancoContas;
+
 
 
     public BancoContas(int max) {
         this.max = max;
         this.bancoContas = new Conta[max];
-        this.tamanho = 0;
     }
 
-    // Getters
-
-
-    public int getTamanho() {
-        return tamanho;
-    }
 
     // Metodos
      public boolean addConta(Conta conta){
-        this.bancoContas[this.tamanho] = conta;
-        this.tamanho++;
+        // Adiciona uma conta ao bancoContas
+        // Index da conta adicionada é gerada pelo gerarID
+        // Index = IdConta - 1
+        this.bancoContas[conta.getIdConta()-1] = conta;
         return true;
      }
 
      public boolean validarConta(String qrcode){
+        // A partir do QRCode esse metodo valida se a conta está cadastrada no bancoContas
 
-        String[] dados = qrcode.split(";");
+         String[] dados = qrcode.split(";");
         int idConta = Integer.parseInt(dados[0]);
-        if (this.bancoContas[idConta-1].getUsuario().getNome().equals(dados[1])){
+
+        // IdConta = index no bancoConta + 1
+        if (bancoContas[idConta-1].getUsuario().getNome().equals(dados[1])){
             return true;
         }
         else{
@@ -39,8 +37,19 @@ public class BancoContas {
         }
      }
 
+     public int gerarID(){
+        // Gera o ID da proxima conta a ser registrada no bancoContas/
+        // O IdConta a ser retornado = indexElementoNull + 1
+        for(int i = 0; i<max; i++){
+            if(this.bancoContas[i] == null){
+                return i+1;
+            }
+        }
+        return 0;
+     }
+/*
     @Override
     public String toString() {
         return bancoContas[0].toString();
-    }
+    }*/
 }
